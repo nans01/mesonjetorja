@@ -1,6 +1,12 @@
-import { useLocalSearchParams, useNavigation } from "expo-router";
+import { Link, useLocalSearchParams, useNavigation } from "expo-router";
 import { useEffect, useState } from "react";
-import { FlatList, SafeAreaView, StyleSheet, Text, View } from "react-native";
+import {
+  FlatList,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+} from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 type Chapter = {
@@ -49,9 +55,11 @@ export default function ChapterScreen() {
         ]}
         showsVerticalScrollIndicator={false}
         renderItem={({ item }) => (
-          <View style={styles.chapteritem}>
-            <Text style={styles.chapterName}>{item.name}</Text>
-          </View>
+          <Link href={`/(tabs)/(textbooks)/${textbook_id}/${item.id}`} asChild>
+            <TouchableOpacity style={styles.chapteritem}>
+              <Text style={styles.chapterName}>{item.name}</Text>
+            </TouchableOpacity>
+          </Link>
         )}
       />
     </SafeAreaView>
