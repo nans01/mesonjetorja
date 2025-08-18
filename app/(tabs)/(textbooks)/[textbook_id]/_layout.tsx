@@ -4,20 +4,22 @@ export default function TextbookLayout() {
   const { chapterTitle } = useLocalSearchParams();
 
   return (
-    <Stack screenOptions={{ headerShown: false }}>
+    <Stack>
       <Stack.Screen
         name="index"
         options={{
-          title: "Textbook",
-          headerLargeTitle: true,
-          headerBackTitle: "Textbooks",
+          headerShown: false,
         }}
       />
       <Stack.Screen
         name="[chapter_id]"
-        options={{
-          title: "Chapter",
-          headerBackTitle: "Chapters",
+        options={({ route }) => {
+          const params = route.params as { chapterTitle?: string } | undefined;
+          return {
+            title: params?.chapterTitle ?? "Chapter",
+            headerLargeTitle: true,
+            headerBackTitle: "Chapters",
+          };
         }}
       />
     </Stack>
