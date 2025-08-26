@@ -4,7 +4,7 @@ export default function TextbookLayout() {
   const { chapterTitle } = useLocalSearchParams();
 
   return (
-    <Stack>
+    <Stack screenOptions={{ headerShown: false }}>
       <Stack.Screen
         name="index"
         options={{

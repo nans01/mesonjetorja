@@ -4,23 +4,23 @@ export default function ExerciseLayout() {
   const { chapterTitle, exerciseTitle } = useLocalSearchParams();
 
   return (
-    <Stack>
+    <Stack screenOptions={{ headerShown: false }}>
       <Stack.Screen
         name="index"
         options={{
           title: chapterTitle ? String(chapterTitle) : "Chapter",
-          headerShown: true,
+          headerShown: false,
           headerLargeTitle: true,
           headerBackTitle: "Chapters",
         }}
       />
       <Stack.Screen
-        name="[exercise_id]/index"
+        name="[exercise_id]"
         options={{
           title: exerciseTitle
             ? `Exercise ${String(exerciseTitle)}`
             : "Exercise",
-          headerShown: true,
+          headerShown: false,
           headerBackTitle: "Exercises",
         }}
       />
